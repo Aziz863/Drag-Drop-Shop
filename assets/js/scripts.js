@@ -27,7 +27,7 @@ document.querySelector('#soltar').addEventListener('drop', function(e) {
                 // sumamos 1 a la cantidad de productos
                 producto.querySelector('.cantidad').innerHTML = +producto.querySelector('.cantidad').innerHTML + 1
                 // Calculamos el precio del producto
-                producto.querySelector('.precio').innerHTML = +producto.querySelector('.cantidad').innerText * +producto.querySelector('.precio').innerText
+                producto.querySelector('.precio').innerHTML = +producto.querySelector('.cantidad').innerText * +producto.querySelector('.precio').getAttribute('price')
             }
         });
     } else {
@@ -66,7 +66,7 @@ function quitar(boton) {
         // Restamos uno a la cantidad
         boton.parentNode.parentNode.querySelector('.cantidad').innerHTML = +boton.parentNode.parentNode.querySelector('.cantidad').innerHTML - 1;
         // Calculamos el precio
-        boton.parentNode.parentNode.querySelector('.precio').innerHTML = +boton.parentNode.parentNode.querySelector('.cantidad').innerText * +boton.parentNode.parentNode.querySelector('.precio').getAttribute('price')
+        boton.parentNode.parentNode.querySelector('.precio').innerHTML = (+boton.parentNode.parentNode.querySelector('.cantidad').innerText * +boton.parentNode.parentNode.querySelector('.precio').getAttribute('price')).toFixed(2)
     } else if (+boton.parentNode.parentNode.querySelector('.cantidad').innerHTML == 1) {
         boton.parentNode.parentNode.remove();
         var index = productos.indexOf(boton.parentNode.parentNode.querySelector('.nombre').innerText);
@@ -80,7 +80,7 @@ function quitar(boton) {
 // sumar uno a la cantidad de un producto
 function añadir(boton) {
     boton.parentNode.parentNode.querySelector('.cantidad').innerHTML = +boton.parentNode.parentNode.querySelector('.cantidad').innerHTML + 1;
-    boton.parentNode.parentNode.querySelector('.precio').innerHTML = +boton.parentNode.parentNode.querySelector('.cantidad').innerText * +boton.parentNode.parentNode.querySelector('.precio').getAttribute('price')
+    boton.parentNode.parentNode.querySelector('.precio').innerHTML = (+boton.parentNode.parentNode.querySelector('.cantidad').innerText * +boton.parentNode.parentNode.querySelector('.precio').getAttribute('price')).toFixed(2);
     calcularTotal();
         
 }
